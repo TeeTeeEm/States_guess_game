@@ -16,10 +16,7 @@ guessed_states = []
 while score <= 50:
     answer = screen.textinput(title=f"{score}/50 State correct", prompt="What's the State's name?").title()
     if answer == "Exit":
-        for state in all_states:
-            if state not in guessed_states:
-                missing_states.append(state)
-
+        missing_states = [state for state in all_states if state not in guessed_states]
         missed = pandas.DataFrame(missing_states)
         missed.to_csv("Missed_states")
         break
